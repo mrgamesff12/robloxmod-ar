@@ -12,66 +12,77 @@
       background: #000;
       color: white;
       font-family: 'Tahoma', sans-serif;
-      box-sizing: border-box;
       width: 100vw;
       overflow-x: hidden;
+      box-sizing: border-box;
     }
-
     body {
       min-height: 100vh;
       width: 100vw;
-      text-align: center;
-      padding: 32px 0 16px 0;
+      padding: 0;
       margin: 0;
-      box-sizing: border-box;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start;
+      justify-content: center;
+      box-sizing: border-box;
     }
-
+    .container {
+      width: 100vw;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      box-sizing: border-box;
+      padding: 0;
+    }
+    h2 {
+      font-size: 15px;
+      margin: 0 0 10px 0;
+      color: #0ff;
+      padding: 0 5vw;
+      word-break: break-word;
+    }
     .step {
       display: flex;
       align-items: center;
       justify-content: space-between;
       background: #111;
       border: 2px solid #444;
-      border-radius: 12px;
-      padding: 15px 18px;
-      margin: 15px auto;
-      max-width: 420px;
-      width: 95vw;
-      box-shadow: 0 0 10px #0ff2;
+      border-radius: 8px;
+      padding: 7px 10px;
+      margin: 6px 0;
+      max-width: 98vw;
+      width: 330px;
+      box-shadow: 0 0 5px #0ff2;
       opacity: 0.4;
       pointer-events: none;
       transition: 0.3s;
       box-sizing: border-box;
       direction: rtl;
+      font-size: 12px;
+      min-height: 34px;
     }
-
     .step.active {
       opacity: 1;
       pointer-events: auto;
     }
-
     .step.completed {
       border-color: lime;
       background-color: #141414;
     }
-
     .step span {
       text-align: right;
-      font-size: 16px;
+      font-size: 12px;
       word-break: break-word;
       flex: 1 1 auto;
-      margin-left: 10px;
+      margin-left: 6px;
       min-width: 0;
     }
-
     .check {
-      font-size: 20px;
+      font-size: 16px;
     }
-
     a {
       color: white;
       text-decoration: none;
@@ -81,154 +92,111 @@
       justify-content: space-between;
       min-width: 0;
     }
-
-    h2 {
-      font-size: 22px;
-      margin-bottom: 28px;
-      color: #0ff;
-      word-break: break-word;
-      padding: 0 2vw;
-    }
-
-    .loading {
-      display: inline-block;
-      width: 16px;
-      height: 16px;
-      border: 2px solid #fff;
-      border-top: 2px solid transparent;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-    }
-
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
     .final-section {
-      margin-top: 30px;
+      margin-top: 7px;
       width: 100%;
-      max-width: 430px;
+      max-width: 340px;
       box-sizing: border-box;
     }
-
     .final-message {
-      font-size: 17px;
-      margin-bottom: 10px;
+      font-size: 12px;
+      margin-bottom: 4px;
       color: red;
       word-break: break-word;
-      padding: 0 2vw;
+      padding: 0 3vw;
+      min-height: 16px;
     }
-
     .final-buttons {
       background: #111;
-      border-radius: 12px;
+      border-radius: 8px;
       border: 2px solid #444;
-      padding: 15px 5px;
-      width: 98vw;
-      max-width: 430px;
+      padding: 7px 4px;
+      width: 100%;
+      max-width: 340px;
       margin: auto;
-      box-shadow: 0 0 10px #0ff3;
+      box-shadow: 0 0 6px #0ff3;
       box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
     }
-
     .final-buttons a {
       display: block;
       background-color: #555;
       color: white;
-      padding: 12px 0;
-      border-radius: 10px;
-      font-size: 16px;
+      padding: 7px 0;
+      border-radius: 7px;
+      font-size: 13px;
       font-weight: bold;
-      margin: 10px auto;
-      width: 95vw;
-      max-width: 380px;
+      margin: 0 auto;
+      width: 98%;
       text-align: center;
       pointer-events: none;
       opacity: 0.5;
       transition: 0.3s;
       word-break: break-word;
     }
-
     .final-buttons a.active {
       background-color: #0c0;
       pointer-events: auto;
       opacity: 1;
     }
-
     .final-buttons a#btnRobux.active {
       background-color: dodgerblue;
     }
-
-    @media (max-width: 500px) {
-      body {
-        padding: 12px 0 8px 0;
-      }
-      h2 {
-        font-size: 19px;
-        margin-bottom: 20px;
-        padding: 0 3vw;
-      }
-      .step {
-        padding: 10px 7px;
-        font-size: 14px;
-        max-width: 99vw;
-        margin: 10px auto;
-      }
-      .final-section {
-        margin-top: 18px;
+    .loading {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border: 2px solid #fff;
+      border-top: 2px solid transparent;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @media (max-width: 400px) {
+      .step, .final-section, .final-buttons {
         max-width: 98vw;
+        width: 98vw;
       }
-      .final-message {
-        font-size: 15px;
-        padding: 0 3vw;
-      }
-      .final-buttons {
-        width: 99vw;
-        max-width: 99vw;
-        padding: 10px 1px;
-      }
-      .final-buttons a {
-        font-size: 15px;
-        padding: 11px 0;
-        max-width: 97vw;
+      .container {
+        padding: 0;
       }
     }
   </style>
 </head>
 <body>
-
-  <h2>نفذ هذه الخطوات أولاً لكي يتم فتح لك روابط التحميل</h2>
-
-  <div id="step1" class="step active">
-    <a href="#" onclick="completeStep(1, 'https://www.youtube.com/@MRGAMESFF-k3q'); return false;">
-      <span>📺🔔 اضغط هنا وقم بالاشتراك في القناة 1 وتفعيل زر الجرس</span>
-      <span id="check1">➡️</span>
-    </a>
-  </div>
-
-  <div id="step2" class="step">
-    <a href="#" onclick="completeStep(2, 'https://www.youtube.com/@DarkPanda-DP'); return false;">
-      <span>📺🔔 اضغط هنا وقم بالاشتراك في القناة 2 وتفعيل زر الجرس</span>
-      <span id="check2">➡️</span>
-    </a>
-  </div>
-
-  <div id="step3" class="step">
-    <a href="#" onclick="rotateStepLinks(3); return false;">
-      <span>👍💬 اضغط هنا وقم بعمل لايك وتعليق للفيديو الذي ستراه</span>
-      <span id="check3">➡️</span>
-    </a>
-  </div>
-
-  <div class="final-section">
-    <div id="finalMessage" class="final-message">❌ نفّذ الخطوات أولاً لكي يتم فتح روابط التحميل</div>
-    <div class="final-buttons">
-      <a id="btnDownload" href="#" onclick="goToDownload(); return false;">🔒 اضغط هنا لتحميل لعبة روبلوكس مهكرة</a>
-      <a id="btnRobux" href="#" onclick="goToRobux(); return false;">🔒 اضغط هنا لمعرفة طريقة الحصول على روبوكس مجاني</a>
+  <div class="container">
+    <h2>نفذ هذه الخطوات لكي تظهر روابط التحميل</h2>
+    <div id="step1" class="step active">
+      <a href="#" onclick="completeStep(1, 'https://www.youtube.com/@MRGAMESFF-k3q'); return false;">
+        <span>اشترك بقناة 1 وفعّل الجرس</span>
+        <span id="check1">➡️</span>
+      </a>
+    </div>
+    <div id="step2" class="step">
+      <a href="#" onclick="completeStep(2, 'https://www.youtube.com/@DarkPanda-DP'); return false;">
+        <span>اشترك بقناة 2 وفعّل الجرس</span>
+        <span id="check2">➡️</span>
+      </a>
+    </div>
+    <div id="step3" class="step">
+      <a href="#" onclick="rotateStepLinks(3); return false;">
+        <span>اعمل لايك وتعليق للفيديو</span>
+        <span id="check3">➡️</span>
+      </a>
+    </div>
+    <div class="final-section">
+      <div id="finalMessage" class="final-message">❌ نفّذ الخطوات أولاً</div>
+      <div class="final-buttons">
+        <a id="btnDownload" href="#" onclick="goToDownload(); return false;">🔒 تحميل روبلوكس مهكرة</a>
+        <a id="btnRobux" href="#" onclick="goToRobux(); return false;">🔒 طريقة روبوكس مجاني</a>
+      </div>
     </div>
   </div>
-
   <script>
     const step3Links = [
       "https://youtu.be/CYzCkO2faCI?si=dxjNGLWa1ZTBoUuO",
@@ -237,7 +205,6 @@
       "https://youtu.be/2NUIqCo9GsA?si=5B9x7PGkoVw49qqE",
       "https://youtu.be/tRfwoy1EnTA?si=R2KtVKde3LmHgYRW"
     ];
-
     function completeStep(step, url) {
       const checkSpan = document.getElementById('check' + step);
       checkSpan.innerHTML = '<span class="loading"></span>';
@@ -250,9 +217,8 @@
           nextStep.classList.add('active');
         }
         unlockButtons();
-      }, 6000);
+      }, 3000);
     }
-
     function rotateStepLinks(step) {
       const checkSpan = document.getElementById('check' + step);
       const index = Math.floor(Math.random() * step3Links.length);
@@ -263,36 +229,29 @@
         document.getElementById('step' + step).classList.add('completed');
         checkSpan.innerText = '✅';
         unlockButtons();
-      }, 6000);
+      }, 3000);
     }
-
     function unlockButtons() {
       const allCompleted = [...Array(3).keys()].every(i =>
         document.getElementById('step' + (i + 1)).classList.contains('completed')
       );
       if (allCompleted) {
-        document.getElementById('finalMessage').innerText = '✅ تم تنفيذ كل الخطوات بنجاح';
+        document.getElementById('finalMessage').innerText = '✅ تم تنفيذ كل الخطوات';
         document.getElementById('finalMessage').style.color = 'lime';
-
         const btnDownload = document.getElementById('btnDownload');
         const btnRobux = document.getElementById('btnRobux');
-
         btnDownload.classList.add('active');
         btnRobux.classList.add('active');
-
-        btnDownload.innerText = '🔓 اضغط هنا لتحميل لعبة روبلوكس مهكرة';
-        btnRobux.innerText = '🔓 اضغط هنا لمعرفة طريقة الحصول على روبوكس مجاني';
+        btnDownload.innerText = '🔓 تحميل روبلوكس مهكرة';
+        btnRobux.innerText = '🔓 طريقة روبوكس مجاني';
       }
     }
-
     function goToDownload() {
       window.open('https://linkjust.com/4oDvq0Q8', '_blank');
     }
-
     function goToRobux() {
       window.open('https://mrgamesff.blogspot.com/2025/06/blog-post_21.html', '_blank');
     }
   </script>
-
 </body>
 </html>
