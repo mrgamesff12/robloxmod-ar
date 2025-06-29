@@ -3,13 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <title>افتح الرابط</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body {
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
       background: #000;
       color: white;
       font-family: 'Tahoma', sans-serif;
+      box-sizing: border-box;
+      width: 100vw;
+      overflow-x: hidden;
+    }
+
+    body {
+      min-height: 100vh;
+      width: 100vw;
       text-align: center;
-      padding: 50px 10px;
+      padding: 32px 0 16px 0;
+      margin: 0;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
     }
 
     .step {
@@ -19,13 +37,16 @@
       background: #111;
       border: 2px solid #444;
       border-radius: 12px;
-      padding: 15px 20px;
+      padding: 15px 18px;
       margin: 15px auto;
-      width: 350px;
+      max-width: 420px;
+      width: 95vw;
       box-shadow: 0 0 10px #0ff2;
       opacity: 0.4;
       pointer-events: none;
       transition: 0.3s;
+      box-sizing: border-box;
+      direction: rtl;
     }
 
     .step.active {
@@ -41,6 +62,10 @@
     .step span {
       text-align: right;
       font-size: 16px;
+      word-break: break-word;
+      flex: 1 1 auto;
+      margin-left: 10px;
+      min-width: 0;
     }
 
     .check {
@@ -54,12 +79,15 @@
       align-items: center;
       width: 100%;
       justify-content: space-between;
+      min-width: 0;
     }
 
     h2 {
-      font-size: 24px;
-      margin-bottom: 30px;
+      font-size: 22px;
+      margin-bottom: 28px;
       color: #0ff;
+      word-break: break-word;
+      padding: 0 2vw;
     }
 
     .loading {
@@ -79,38 +107,47 @@
 
     .final-section {
       margin-top: 30px;
+      width: 100%;
+      max-width: 430px;
+      box-sizing: border-box;
     }
 
     .final-message {
-      font-size: 18px;
+      font-size: 17px;
       margin-bottom: 10px;
       color: red;
+      word-break: break-word;
+      padding: 0 2vw;
     }
 
     .final-buttons {
       background: #111;
       border-radius: 12px;
       border: 2px solid #444;
-      padding: 15px 10px;
-      width: 380px;
+      padding: 15px 5px;
+      width: 98vw;
+      max-width: 430px;
       margin: auto;
       box-shadow: 0 0 10px #0ff3;
+      box-sizing: border-box;
     }
 
     .final-buttons a {
       display: block;
       background-color: #555;
       color: white;
-      padding: 12px;
+      padding: 12px 0;
       border-radius: 10px;
       font-size: 16px;
       font-weight: bold;
       margin: 10px auto;
-      width: 350px;
+      width: 95vw;
+      max-width: 380px;
       text-align: center;
       pointer-events: none;
       opacity: 0.5;
       transition: 0.3s;
+      word-break: break-word;
     }
 
     .final-buttons a.active {
@@ -122,11 +159,46 @@
     .final-buttons a#btnRobux.active {
       background-color: dodgerblue;
     }
+
+    @media (max-width: 500px) {
+      body {
+        padding: 12px 0 8px 0;
+      }
+      h2 {
+        font-size: 19px;
+        margin-bottom: 20px;
+        padding: 0 3vw;
+      }
+      .step {
+        padding: 10px 7px;
+        font-size: 14px;
+        max-width: 99vw;
+        margin: 10px auto;
+      }
+      .final-section {
+        margin-top: 18px;
+        max-width: 98vw;
+      }
+      .final-message {
+        font-size: 15px;
+        padding: 0 3vw;
+      }
+      .final-buttons {
+        width: 99vw;
+        max-width: 99vw;
+        padding: 10px 1px;
+      }
+      .final-buttons a {
+        font-size: 15px;
+        padding: 11px 0;
+        max-width: 97vw;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <h2>نفذ هذه الخطوات اولا لكي يتم فتح لك روابط التحميل</h2>
+  <h2>نفذ هذه الخطوات أولاً لكي يتم فتح لك روابط التحميل</h2>
 
   <div id="step1" class="step active">
     <a href="#" onclick="completeStep(1, 'https://www.youtube.com/@MRGAMESFF-k3q'); return false;">
@@ -195,25 +267,23 @@
     }
 
     function unlockButtons() {
-  const allCompleted = [...Array(3).keys()].every(i =>
-    document.getElementById('step' + (i + 1)).classList.contains('completed')
-  );
-  if (allCompleted) {
-    document.getElementById('finalMessage').innerText = '✅ تم تنفيذ كل الخطوات بنجاح';
-    document.getElementById('finalMessage').style.color = 'lime';
+      const allCompleted = [...Array(3).keys()].every(i =>
+        document.getElementById('step' + (i + 1)).classList.contains('completed')
+      );
+      if (allCompleted) {
+        document.getElementById('finalMessage').innerText = '✅ تم تنفيذ كل الخطوات بنجاح';
+        document.getElementById('finalMessage').style.color = 'lime';
 
-    const btnDownload = document.getElementById('btnDownload');
-   const btnRobux = document.getElementById('btnRobux');
+        const btnDownload = document.getElementById('btnDownload');
+        const btnRobux = document.getElementById('btnRobux');
 
-    btnDownload.classList.add('active');
-    btnRobux.classList.add('active');
+        btnDownload.classList.add('active');
+        btnRobux.classList.add('active');
 
-    // تغيير القفل المغلق إلى مفتوح
-    btnDownload.innerText = '🔓 اضغط هنا لتحميل لعبة روبلوكس مهكرة';
-    btnRobux.innerText = '🔓 اضغط هنا لمعرفة طريقة الحصول على روبوكس مجاني';
-  }
-}
-
+        btnDownload.innerText = '🔓 اضغط هنا لتحميل لعبة روبلوكس مهكرة';
+        btnRobux.innerText = '🔓 اضغط هنا لمعرفة طريقة الحصول على روبوكس مجاني';
+      }
+    }
 
     function goToDownload() {
       window.open('https://linkjust.com/4oDvq0Q8', '_blank');
