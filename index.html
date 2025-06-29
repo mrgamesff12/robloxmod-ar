@@ -5,84 +5,75 @@
   <title>افتح الرابط</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-      background: #000;
-      color: white;
-      font-family: 'Tahoma', sans-serif;
-      width: 100vw;
-      overflow-x: hidden;
-      box-sizing: border-box;
-    }
     body {
       min-height: 100vh;
-      width: 100vw;
-      padding: 0;
       margin: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      box-sizing: border-box;
-    }
-    .container {
-      width: 100vw;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      box-sizing: border-box;
       padding: 0;
+      background: linear-gradient(135deg, #141E30 0%, #243B55 100%);
+      color: #fff;
+      font-family: 'Tahoma', sans-serif;
+      text-align: center;
+      padding: 0;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
     }
+
     h2 {
-      font-size: 15px;
-      margin: 0 0 10px 0;
-      color: #0ff;
-      padding: 0 5vw;
-      word-break: break-word;
+      font-size: 1.4rem;
+      margin: 32px 0 18px 0;
+      color: #00ffe7;
+      letter-spacing: 1px;
+      font-weight: bold;
     }
+
     .step {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: #111;
-      border: 2px solid #444;
-      border-radius: 8px;
-      padding: 7px 10px;
-      margin: 6px 0;
-      max-width: 98vw;
-      width: 330px;
-      box-shadow: 0 0 5px #0ff2;
+      background: rgba(20,30,40,0.95);
+      border: 2px solid #313b50;
+      border-radius: 16px;
+      padding: 13px 18px;
+      margin: 12px auto;
+      max-width: 400px;
+      width: 95vw;
+      box-shadow: 0 2px 16px #00fff622, 0 0.5px 1px #0003;
       opacity: 0.4;
       pointer-events: none;
       transition: 0.3s;
-      box-sizing: border-box;
-      direction: rtl;
-      font-size: 12px;
-      min-height: 34px;
+      min-height: 56px;
     }
+
     .step.active {
       opacity: 1;
       pointer-events: auto;
+      border-color: #0ff;
+      background: rgba(30,45,60,0.98);
     }
+
     .step.completed {
-      border-color: lime;
-      background-color: #141414;
+      border-color: #47ff47;
+      background: rgba(25,35,25,0.98);
     }
+
     .step span {
       text-align: right;
-      font-size: 12px;
-      word-break: break-word;
-      flex: 1 1 auto;
-      margin-left: 6px;
-      min-width: 0;
+      font-size: 1rem;
+      flex: 1;
+      margin-left: 10px;
     }
+
     .check {
-      font-size: 16px;
+      font-size: 22px;
+      min-width: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
+
     a {
       color: white;
       text-decoration: none;
@@ -90,113 +81,146 @@
       align-items: center;
       width: 100%;
       justify-content: space-between;
-      min-width: 0;
+      cursor: pointer;
+      outline: none;
     }
+
+    .loading {
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      border: 2.5px solid #fff;
+      border-top: 2.5px solid transparent;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-right: 6px;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg);}
+      100% { transform: rotate(360deg);}
+    }
+
     .final-section {
-      margin-top: 7px;
+      margin-top: 26px;
       width: 100%;
-      max-width: 340px;
-      box-sizing: border-box;
-    }
-    .final-message {
-      font-size: 12px;
-      margin-bottom: 4px;
-      color: red;
-      word-break: break-word;
-      padding: 0 3vw;
-      min-height: 16px;
-    }
-    .final-buttons {
-      background: #111;
-      border-radius: 8px;
-      border: 2px solid #444;
-      padding: 7px 4px;
-      width: 100%;
-      max-width: 340px;
-      margin: auto;
-      box-shadow: 0 0 6px #0ff3;
-      box-sizing: border-box;
       display: flex;
       flex-direction: column;
-      gap: 7px;
+      align-items: center;
     }
+
+    .final-message {
+      font-size: 1.05rem;
+      margin-bottom: 12px;
+      color: #ff4a4a;
+      font-weight: bold;
+      text-shadow: 0 1px 2px #0004;
+    }
+
+    .final-buttons {
+      background: rgba(30,45,60,0.95);
+      border-radius: 16px;
+      border: 2px solid #313b50;
+      padding: 17px 8px 10px 8px;
+      max-width: 410px;
+      width: 99vw;
+      margin: auto;
+      box-shadow: 0 2px 12px #00fff633, 0 0.5px 1px #0002;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
     .final-buttons a {
       display: block;
-      background-color: #555;
+      background-color: #333a;
       color: white;
-      padding: 7px 0;
-      border-radius: 7px;
-      font-size: 13px;
+      padding: 13px 0;
+      border-radius: 12px;
+      font-size: 1.05rem;
       font-weight: bold;
       margin: 0 auto;
-      width: 98%;
+      width: 96%;
       text-align: center;
       pointer-events: none;
       opacity: 0.5;
       transition: 0.3s;
-      word-break: break-word;
+      box-shadow: 0 2px 6px #0002;
+      border: none;
+      outline: none;
     }
+
     .final-buttons a.active {
-      background-color: #0c0;
+      background-color: #03c96f;
       pointer-events: auto;
       opacity: 1;
+      color: #fff;
     }
+
     .final-buttons a#btnRobux.active {
-      background-color: dodgerblue;
+      background-color: #1da1f2;
     }
-    .loading {
-      display: inline-block;
-      width: 12px;
-      height: 12px;
-      border: 2px solid #fff;
-      border-top: 2px solid transparent;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-    }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-    @media (max-width: 400px) {
-      .step, .final-section, .final-buttons {
-        max-width: 98vw;
-        width: 98vw;
-      }
-      .container {
+
+    /* Responsive */
+    @media (max-width: 480px) {
+      body {
         padding: 0;
       }
+      .step, .final-buttons {
+        min-width: 0;
+        max-width: 99vw;
+        width: 99vw;
+        padding-left: 6vw;
+        padding-right: 6vw;
+        box-sizing: border-box;
+      }
+      h2 {
+        font-size: 1.08rem;
+      }
+      .final-buttons a {
+        font-size: 0.98rem;
+        padding: 11px 0;
+        width: 98%;
+      }
+    }
+    @media (max-width: 340px) {
+      .step, .final-buttons {padding-left: 2vw; padding-right:2vw;}
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h2>نفذ هذه الخطوات لكي تظهر روابط التحميل</h2>
-    <div id="step1" class="step active">
-      <a href="#" onclick="completeStep(1, 'https://www.youtube.com/@MRGAMESFF-k3q'); return false;">
-        <span>اشترك بقناة 1 وفعّل الجرس</span>
-        <span id="check1">➡️</span>
-      </a>
-    </div>
-    <div id="step2" class="step">
-      <a href="#" onclick="completeStep(2, 'https://www.youtube.com/@DarkPanda-DP'); return false;">
-        <span>اشترك بقناة 2 وفعّل الجرس</span>
-        <span id="check2">➡️</span>
-      </a>
-    </div>
-    <div id="step3" class="step">
-      <a href="#" onclick="rotateStepLinks(3); return false;">
-        <span>اعمل لايك وتعليق للفيديو</span>
-        <span id="check3">➡️</span>
-      </a>
-    </div>
-    <div class="final-section">
-      <div id="finalMessage" class="final-message">❌ نفّذ الخطوات أولاً</div>
-      <div class="final-buttons">
-        <a id="btnDownload" href="#" onclick="goToDownload(); return false;">🔒 تحميل روبلوكس مهكرة</a>
-        <a id="btnRobux" href="#" onclick="goToRobux(); return false;">🔒 طريقة روبوكس مجاني</a>
-      </div>
+
+  <h2>نفّذ هذه الخطوات أولًا لكي يتم فتح لك روابط التحميل</h2>
+
+  <div id="step1" class="step active">
+    <a href="#" onclick="completeStep(1, 'https://www.youtube.com/@MRGAMESFF-k3q'); return false;">
+      <span>📺🔔 اضغط هنا وقم بالاشتراك في القناة 1 وتفعيل زر الجرس</span>
+      <span id="check1" class="check">➡️</span>
+    </a>
+  </div>
+
+  <div id="step2" class="step">
+    <a href="#" onclick="completeStep(2, 'https://www.youtube.com/@DarkPanda-DP'); return false;">
+      <span>📺🔔 اضغط هنا وقم بالاشتراك في القناة 2 وتفعيل زر الجرس</span>
+      <span id="check2" class="check">➡️</span>
+    </a>
+  </div>
+
+  <div id="step3" class="step">
+    <a href="#" onclick="rotateStepLinks(3); return false;">
+      <span>👍💬 اضغط هنا وقم بعمل لايك وتعليق للفيديو الذي ستراه</span>
+      <span id="check3" class="check">➡️</span>
+    </a>
+  </div>
+
+  <div class="final-section">
+    <div id="finalMessage" class="final-message">❌ نفّذ الخطوات أولاً لكي يتم فتح روابط التحميل</div>
+    <div class="final-buttons">
+      <a id="btnDownload" href="#" onclick="goToDownload(); return false;">🔒 اضغط هنا لتحميل لعبة روبلوكس مهكرة</a>
+      <a id="btnRobux" href="#" onclick="goToRobux(); return false;">🔒 اضغط هنا لمعرفة طريقة الحصول على روبوكس مجاني</a>
     </div>
   </div>
+
   <script>
     const step3Links = [
       "https://youtu.be/CYzCkO2faCI?si=dxjNGLWa1ZTBoUuO",
@@ -205,6 +229,7 @@
       "https://youtu.be/2NUIqCo9GsA?si=5B9x7PGkoVw49qqE",
       "https://youtu.be/tRfwoy1EnTA?si=R2KtVKde3LmHgYRW"
     ];
+
     function completeStep(step, url) {
       const checkSpan = document.getElementById('check' + step);
       checkSpan.innerHTML = '<span class="loading"></span>';
@@ -217,8 +242,9 @@
           nextStep.classList.add('active');
         }
         unlockButtons();
-      }, 3000);
+      }, 6000);
     }
+
     function rotateStepLinks(step) {
       const checkSpan = document.getElementById('check' + step);
       const index = Math.floor(Math.random() * step3Links.length);
@@ -229,29 +255,37 @@
         document.getElementById('step' + step).classList.add('completed');
         checkSpan.innerText = '✅';
         unlockButtons();
-      }, 3000);
+      }, 6000);
     }
+
     function unlockButtons() {
       const allCompleted = [...Array(3).keys()].every(i =>
         document.getElementById('step' + (i + 1)).classList.contains('completed')
       );
       if (allCompleted) {
-        document.getElementById('finalMessage').innerText = '✅ تم تنفيذ كل الخطوات';
+        document.getElementById('finalMessage').innerText = '✅ تم تنفيذ كل الخطوات بنجاح';
         document.getElementById('finalMessage').style.color = 'lime';
+
         const btnDownload = document.getElementById('btnDownload');
         const btnRobux = document.getElementById('btnRobux');
+
         btnDownload.classList.add('active');
         btnRobux.classList.add('active');
-        btnDownload.innerText = '🔓 تحميل روبلوكس مهكرة';
-        btnRobux.innerText = '🔓 طريقة روبوكس مجاني';
+
+        // تغيير القفل المغلق إلى مفتوح
+        btnDownload.innerText = '🔓 اضغط هنا لتحميل لعبة روبلوكس مهكرة';
+        btnRobux.innerText = '🔓 اضغط هنا لمعرفة طريقة الحصول على روبوكس مجاني';
       }
     }
+
     function goToDownload() {
       window.open('https://linkjust.com/4oDvq0Q8', '_blank');
     }
+
     function goToRobux() {
       window.open('https://mrgamesff.blogspot.com/2025/06/blog-post_21.html', '_blank');
     }
   </script>
+
 </body>
 </html>
