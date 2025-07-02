@@ -85,6 +85,7 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
+      z-index: 999;
     }
     #subscribeBtn {
       display: none;
@@ -196,7 +197,7 @@
     let spacing = 0;
 
     if (jumps >= 21) {
-      numberOfCacti = Math.floor(Math.random() * 2) + 2; // 2 إلى 3 صبارات
+      numberOfCacti = Math.floor(Math.random() * 2) + 2;
       spacing = 40;
     }
 
@@ -326,19 +327,25 @@
     window.open('https://mrgamesff.blogspot.com/2025/06/blog-post_21.html', '_blank');
   }
 
+  // ✅ التعديل هنا لضمان عمل الزر في الهاتف
   game.addEventListener("mousedown", (e) => {
+    if (e.target.tagName === "BUTTON") return;
     if (e.button === 0 || e.button === 2) jump();
   });
+
   game.addEventListener("touchstart", (e) => {
+    if (e.target.tagName === "BUTTON") return;
     e.preventDefault();
     jump();
   }, { passive: false });
+
   window.addEventListener("keydown", (e) => {
     if (e.code === "Space") {
       e.preventDefault();
       jump();
     }
   });
+
   window.addEventListener("contextmenu", e => e.preventDefault());
 
   setInterval(() => {
