@@ -5,6 +5,9 @@
   <title>افتح الرابط</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1" />
   <style>
+    html, body {
+      overflow-x: hidden;
+    }
     body {
       margin: 0;
       font-family: 'Tahoma', sans-serif;
@@ -327,7 +330,6 @@
     window.open('https://mrgamesff.blogspot.com/2025/06/blog-post_21.html', '_blank');
   }
 
-  // ✅ التعديل هنا لضمان عمل الزر في الهاتف
   game.addEventListener("mousedown", (e) => {
     if (e.target.tagName === "BUTTON") return;
     if (e.button === 0 || e.button === 2) jump();
